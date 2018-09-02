@@ -9,6 +9,9 @@ class UsersController < ApplicationController
     redirect_to '/users/welcome'
   end
 
+  def welcome
+  end
+  
 private
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation)
