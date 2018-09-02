@@ -5,10 +5,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    session[:user_id] = @user.id
-
-    redirect_to '/welcome'
+    @user = User.new(user_params)
+    if @user.password ==@user.password_confirmation
+      session[:user_id] = @user.id
+      redirect_to '/welcome'
+    else  
+      redirect_to '/users/new'
+    end
   end
 
   def welcome
