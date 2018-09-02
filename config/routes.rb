@@ -55,4 +55,6 @@ Rails.application.routes.draw do
   #   end
 
   resources :users, :sessions
+
+  get '/users/welcome', to: 'users#welcome'
 end
