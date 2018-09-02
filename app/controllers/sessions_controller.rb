@@ -1,13 +1,12 @@
-<<<<<<< HEAD
 class SessionsController < ApplicationController
-=======
-class SessionsController <ApplicationController
 
   def new
   end
 
-  def created
+  def create
+    @user = User.find_by(name: params[:name])
+    return head(:forbidden) unless @user.authenticate(params[:password])
+    session[:name] = @user.name
   end
 
->>>>>>> 9e5cd8104009335dc01abffd1730b48726160939
 end
